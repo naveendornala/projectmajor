@@ -1,0 +1,982 @@
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
+
+/* Base fonts */
+body {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #fff;
+  background: #111;
+}
+
+/* Header container - centered white bar like screenshot */
+header {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.nav-wrap {
+  width: 92%;
+  max-width: 1200px; /* adjust to match screenshot width */
+  background: #fff;
+  border-radius: 4px;
+  padding: 14px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #111;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.logo-img {
+  width: 56px;            /* fixed width so logo shows correctly */
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Nav items */
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  color: #101010;
+  letter-spacing: 0.6px;
+}
+
+/* Hover color - yellow highlight */
+.main-nav a:hover { color: #f5b000; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  /* Use relative path. Ensure background.jpg exists in same folder. */
+  background-image: url("https://themewagon.github.io/foodfun/assets/images/banner-bg.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;        /* ensures full coverage */
+}
+
+/* optional overlay to slightly darken background for legible text */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.28);
+  z-index: 1;
+}
+
+/* hero content sits above overlay */
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  padding: 40px;
+}
+
+/* small subtitle */
+.subtitle {
+  font-size: 13px;
+  letter-spacing: 1.6px;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+/* big headline using Playfair Display for similar stylish serif look */
+.hero-inner h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  line-height: 1.02;
+  margin: 0 auto;
+  color: #fff;
+  /* responsive size */
+  font-size: clamp(36px, 8vw, 92px);
+  text-shadow: 0 6px 22px rgba(0,0,0,0.45);
+}
+
+/* yellow accent for words like 'flavors' */
+.accent {
+  color: #f5b000;
+  font-style: italic;
+}
+
+/* Responsive tweaks (phones) */
+@media (max-width: 720px) {
+  .nav-wrap { padding: 12px 16px; width: 94%; }
+  .logo-img { width: 48px; }
+  .main-nav ul { gap: 14px; font-size: 13px; }
+  .hero-inner { padding: 22px; }
+  .subtitle { font-size: 12px; }
+}
+
+/* Welcome Section */
+.welcome {
+    padding: 100px 10%;
+    background: #fff;
+}
+
+.welcome-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.welcome-image img {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.welcome-text {
+    max-width: 500px;
+}
+
+.welcome-text h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1c1c1c;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    font-family: "Playfair Display", serif;
+}
+
+.welcome-text h2 .highlight {
+    color: #f5b000;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.welcome-text p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #f5b000;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #d49500;
+}
+
+
+
+
+/* Delicious Food Section */
+.food {
+  padding: 100px 10%;
+  background: #fff;
+}
+
+.food-header {
+  text-align: left;
+  margin-bottom: 50px;
+  max-width: 700px;
+}
+
+.food-header h2 {
+  font-size: 34px;
+  font-weight: 700;
+  color: #1c1c1c;
+  margin-bottom: 15px;
+  font-family: "Playfair Display", serif;
+}
+
+.food-header .highlight {
+  color: #f5b000;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.food-header p {
+  color: #555;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* Grid */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.food-card {
+  background: #f9f9f9;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.food-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.food-info {
+  padding: 18px;
+}
+
+.food-info h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1c1c1c;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.food-info .price {
+  color: #f5b000;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.food-info p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Hover effect */
+.food-card:hover {
+  background: #f5b000;
+  transform: translateY(-6px);
+}
+
+.food-card:hover h3,
+.food-card:hover p,
+.food-card:hover .price {
+  color: #fff;
+}
+
+
+/* Reservation Section */
+.reservation {
+  background: url('https://themewagon.github.io/foodfun/assets/images/reservation-bg.jpg') no-repeat center center/cover;
+  padding: 120px 20px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+
+.reservation::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* dark overlay */
+}
+
+.reservation-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: auto;
+}
+
+.reservation h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-family: "Playfair Display", serif;
+}
+
+.reservation p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+.btn-reserve {
+  display: inline-block;
+  background: #f5b000;
+  color: #000;
+  font-weight: 700;
+  padding: 12px 30px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-reserve:hover {
+  background: #000;
+  color: #f5b000;
+  transform: scale(1.05);
+}
+
+
+/* Special Dishes Section */
+.special-dishes {
+  padding: 100px 8%;
+  background: #fff;
+  text-align: center;
+}
+
+.section-title {
+  margin-bottom: 60px;
+}
+
+.section-title h2 {
+  font-size: 36px;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.section-title h2 span {
+  color: #f5b000;
+}
+
+.section-title p {
+  color: #666;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.dish {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.dish-text {
+  flex: 1;
+}
+
+.dish-no {
+  font-size: 32px;
+  font-weight: 700;
+  margin-right: 15px;
+  color: #000;
+}
+
+.dish-text h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.dish-text h3 span {
+  color: #f5b000;
+}
+
+.dish-text p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: 22px;
+  color: #f5b000;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.book-link {
+  font-weight: 700;
+  text-decoration: none;
+  color: #000;
+  border-bottom: 2px solid #000;
+  transition: all 0.3s ease;
+}
+
+.book-link:hover {
+  color: #f5b000;
+  border-color: #f5b000;
+}
+
+.dish-img {
+  flex: 1;
+  text-align: right;
+}
+
+.dish-img img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .dish {
+    flex-direction: column;
+    text-align: center;
+  }
+  .dish-text {
+    text-align: center;
+  }
+  .dish-img {
+    text-align: center;
+  }
+}
+
+
+/* Special Dishes Section */
+/* Second Dish Section */
+.menu-item {
+  width: 100%;
+  background: #fff;
+  padding: 80px 0;
+}
+
+.menu-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.menu-image img {
+  width: 450px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.menu-content {
+  max-width: 500px;
+}
+
+.menu-content h2 {
+  font-size: 2rem;
+  color: #0b093b;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.menu-content h2 span {
+  color: #ffbb00;
+  font-weight: 900;
+
+}
+
+.menu-content .highlight {
+  color: #0b093b;
+}
+
+.menu-content p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.menu-content .price {
+  font-size: 1.5rem;
+  color: #ffbb00;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.book-btn {
+  text-decoration: none;
+  color: #0b093b;
+  font-weight: 600;
+  border-bottom: 2px solid #0b093b;
+  padding-bottom: 4px;
+  transition: 0.3s;
+}
+
+.book-btn:hover {
+  color: #ffbb00;
+  border-color: #ffbb00;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .menu-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .menu-image img {
+    width: 90%;
+  }
+}
+
+
+
+/* Second Dish Section */
+.menu-item {
+  width: 100%;
+  background: #fff;
+  padding: 80px 0;
+}
+
+.menu-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.menu-image img {
+  width: 450px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.menu-content {
+  max-width: 500px;
+}
+
+.menu-content h2 {
+  font-size: 2rem;
+  color: #0b093b;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.menu-content h2 span {
+  color: #ffbb00;
+  font-weight: 900;
+}
+
+.menu-content .highlight {
+  color: #0b093b;
+}
+
+.menu-content p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.menu-content .price {
+  font-size: 1.5rem;
+  color: #ffbb00;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.book-btn {
+  text-decoration: none;
+  color: #0b093b;
+  font-weight: 600;
+  border-bottom: 2px solid #0b093b;
+  padding-bottom: 4px;
+  transition: 0.3s;
+}
+
+.book-btn:hover {
+  color: #ffbb00;
+  border-color: #ffbb00;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .menu-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .menu-image img {
+    width: 90%;
+  }
+}
+
+
+/* Customer Says Section */
+.testimonial-section {
+  background: url('https://themewagon.github.io/foodfun/assets/images/testimonial-bg.jpg') center/cover no-repeat;
+  padding: 100px 0;
+  text-align: center;
+  position: relative;
+}
+
+.testimonial-header h2 {
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.testimonial-header h2 span {
+  color: yellow                                                                                     ;
+}
+
+.testimonial-header p {
+  color: white;
+  font-style: italic;
+  margin-bottom: 60px;
+  font-size: 1.5rem;
+
+}
+
+.testimonial-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.testimonial-box {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 400px;
+  padding: 30px;
+  text-align: left;
+}
+
+.testimonial-box img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.testimonial-box h3 {
+  font-size: 1.2rem;
+  color: #0b093b;
+  margin-bottom: 5px;
+}
+
+.testimonial-box .role {
+  color: #555;
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.testimonial-box .message {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .testimonial-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonial-box {
+    width: 85%;
+    text-align: center;
+  }
+}
+
+/* Food Update Section  */
+.food-update {
+  background-color: white;
+  text-align: center;
+  padding: 80px 0;
+}
+
+.section-title h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.section-title h2 span {
+  color: #ffbb00;
+}
+
+.section-title p {
+  color: #6f6f6f;
+  font-style: italic;
+  margin-bottom: 50px;
+}
+
+.food-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.food-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.food-card:hover {
+  transform: translateY(-5px);
+}
+
+.food-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.food-info {
+  padding: 20px;
+  text-align: left;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.food-info h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0b132b;
+  margin-bottom: 8px;
+}
+
+.food-info p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.food-info a {
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.food-info a:hover {
+  text-decoration: none;
+}
+
+
+/* Book Table Section */
+.book-table {
+  position: relative;
+  background: url('https://themewagon.github.io/foodfun/assets/images/table-bg.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.book-table .overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-table .content {
+  text-align: center;
+  width: 80%;
+  max-width: 900px;
+}
+
+.book-table h1 {
+  font-size: 45px;
+  font-weight: 700;
+}
+
+.book-table h1 span {
+  color: #f7b500;
+}
+
+.book-table p {
+  font-style: italic;
+  margin: 15px 0 40px;
+  color: #ddd;
+}
+
+.book-table form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group input {
+  width: 250px;
+  padding: 15px 40px 15px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+.form-group i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  font-size: 18px;
+}
+
+button {
+  background-color: #f7b500;
+  color: #000;
+  padding: 15px 40px;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #d49e00;
+  transform: scale(1.05);
+}
+
+.footer-section {
+  background: #232342;
+  color: #aaa;
+  padding: 40px 0 20px 0;
+  font-family: 'Roboto', sans-serif;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+.footer-column {
+  flex-basis: 30%;
+  margin: 0 15px;
+}
+.logo-section .logo {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.logo-section .egg-icon {
+  font-size: 2.3rem;
+  margin-right: 10px;
+}
+.logo-section .brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 2rem;
+}
+.contact-section h3,
+.hours-section h3 {
+  color: #ffbc3b;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.contact-section ul, .hours-section ul {
+  list-style: none;
+  padding: 0;
+}
+.contact-section li, .hours-section li {
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+.icon {
+  margin-right: 8px;
+  color: #ffbc3b;
+  font-size: 1.2rem;
+}
+.footer-bottom {
+  margin-top: 30px;
+  text-align: center;
+  color: #fff;
+  border-top: 1px solid #333;
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+}
+.social-icons a {
+  margin: 0 5px;
+  color: #fff;
+  font-size: 1.3rem;
+  transition: color 0.2s;
+}
+.social-icons a:hover {
+  color: #ffbc3b;
+}
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-column {
+    flex-basis: 100%;
+    margin-bottom: 25px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
